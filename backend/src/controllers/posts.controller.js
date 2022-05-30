@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const User = require("../models/User");
-const Post = require("../models/Post");
+const User = require("../models/User.model");
+const Post = require("../models/Post.model");
 
 //CREATE POST
 router.post("/", async (req, res) => {
@@ -66,6 +66,16 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//GET ALL POSTS BY LIKES
+router.get("/:id", async (req, res) => {
+    try {
+      const post = await Blog.find().sort({ 'likes': -1 });
+      res.status(200).json(post);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 //GET ALL POSTS
 router.get("/", async (req, res) => {
