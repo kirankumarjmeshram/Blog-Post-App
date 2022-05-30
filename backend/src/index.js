@@ -35,9 +35,12 @@ const storage = multer.diskStorage({
     res.status(200).json("File has been uploaded");
   });
   
-  app.use("/api/auth", authController);
-  app.use("/api/users", userController);
-  app.use("/api/posts", postController);
+  app.use("/auth", authController);
+  app.use("/users", userController);
+  app.use("/posts", postController);
+  // app.use("/",()=>{
+  //   console.log("Hello world")
+  // })
 
 
 
