@@ -77,6 +77,28 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+  //GET POST BY TITLE
+  router.get("/:title", async (req, res) => {
+    try {
+      const post = await Blog.find().sort({ 'likes': -1 });
+      res.status(200).json(post);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+//GET POST BY AUTHOR
+router.get("/:author", async (req, res) => {
+  try {
+    const post = await Blog.find().sort({ 'likes': -1 });
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
 //GET ALL POSTS
 router.get("/", async (req, res) => {
   const username = req.query.user;

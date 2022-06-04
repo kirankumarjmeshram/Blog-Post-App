@@ -1,3 +1,5 @@
+
+
 const mongoose = require("mongoose");
 const {ObjectId} = mongoose.Schema.Types
 const PostSchema = new mongoose.Schema(
@@ -19,7 +21,11 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    categories: {
+    author: {
+      type: Array,
+      required: false,
+    },
+    label: {
       type: Array,
       required: false,
     },
